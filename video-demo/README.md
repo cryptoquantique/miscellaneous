@@ -13,7 +13,7 @@ sudo reboot
 
 run 
 ```sh
-curl -sfL https://get.k3s.io | sh -`
+curl -sfL https://get.k3s.io | sh -
 ```
 
 To reinstall the agent, you will need to clear the `/etc/quarklink` directory:

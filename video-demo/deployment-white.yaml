@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: quarklink-video-demo-white
+  labels:
+    app: quarklink-video-demo-white
+spec:
+  replicas: 1
+  revisionHistoryLimit: 1
+  selector:
+    matchLabels:
+      app: quarklink-video-demo-white
+  template:
+    metadata:
+      labels:
+        app: quarklink-video-demo-white
+    spec:
+      containers:
+        - name: quarklink-video-demo-white
+          image: quarklinkdev/quarklink-video-demo:white
+          imagePullPolicy: "Always"
+          volumeMounts:
+          - mountPath: /etc/quarklink
+            name: etc-quarklink
+          securityContext:
+            privileged: true
+      volumes:
+        - name: etc-quarklink
+          hostPath:
+            path: /etc/quarklink
